@@ -74,11 +74,11 @@ var Pagination = function (_React$Component) {
     return _this;
   }
 
-  Pagination.prototype.selectRowsPerPage = function selectRowsPerPage() {
+  Pagination.prototype.selectRowsPerPage = function selectRowsPerPage(e) {
     var updatedState = Object.assign({}, this.props);
-    updatedState.numberOfRows = parseInt(event.target.innerText);
+    updatedState.numberOfRows = parseInt(e.target.innerText, 10);
     if (updatedState.numberOfRows * this.props.page > this.props.total) {
-      var updatedPage = Math.ceil(this.props.total / updatedState.numberOfRows);
+      var updatedPage = Math.ceil(this.props.total / updatedState.numberOfRows, 10);
       updatedState.page = updatedPage;
       this.props.updateRows(updatedState);
     } else {
@@ -86,9 +86,9 @@ var Pagination = function (_React$Component) {
     }
   };
 
-  Pagination.prototype.selectPageNumber = function selectPageNumber() {
+  Pagination.prototype.selectPageNumber = function selectPageNumber(e) {
     var updatedState = Object.assign({}, this.props);
-    updatedState.page = parseInt(event.target.innerText);
+    updatedState.page = parseInt(e.target.innerText, 10);
     this.props.updateRows(updatedState);
   };
 
